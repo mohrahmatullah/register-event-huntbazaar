@@ -56,6 +56,10 @@ class DashboardController extends Controller
 
             $p->email                 = $request->email;
             $p->save();
+            $notification = array(
+                'message' => 'Success mengirimkan generate link.',
+                'alert-type' => 'success'
+            );
             /*Send email message carier*/
             try{
                 Mail::send('layouts.layout-email',
@@ -75,10 +79,7 @@ class DashboardController extends Controller
                 return redirect()->back();
             }
             /* \Send email message carier*/
-            $notification = array(
-                'message' => 'Success mengirimkan generate link.',
-                'alert-type' => 'success'
-            );
+            
           return redirect()->back()->with($notification);
         }
 
