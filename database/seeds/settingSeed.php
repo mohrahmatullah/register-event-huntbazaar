@@ -13,7 +13,7 @@ class settingSeed extends Seeder
     public function run()
     {
         $setting = [
-	        ['param' => 'date_expired', 'param_value' => '2021-01-08 23:59:59']
+	        ['param' => 'date_expired', 'param_value' => '2021-05-08 23:59:59']
 	    ];
 
 	    Setting::insert($setting);
