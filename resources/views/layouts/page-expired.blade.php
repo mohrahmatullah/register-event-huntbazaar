@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>404 Page not found</title>
+  <title>Page expired</title>
   <!-- Link tags -->
   <link rel='index' title='title website' href='link website' />
   <!-- Font Awesome -->
@@ -35,23 +35,17 @@
   <link rel="stylesheet" href="{{url('sweetalert/sweetalert.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
-  <div class="wrapper">
-  <!-- Main content -->
+    <!-- Main content -->
     <section class="content">
       <div class="error-page">
-        <h2 class="headline text-warning"> 404</h2>
-
         <div class="error-content">
-          <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
-          <p>
-            We could not find the page you were looking for.
-          </p>
+          <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Register Event Huntbazaar Has Been Expired</h3>
         </div>
-        <!-- /.error-content -->
       </div>
       <!-- /.error-page -->
+
     </section>
     <!-- /.content -->
-  </div>
+
 </body>
 </html>

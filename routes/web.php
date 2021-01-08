@@ -11,15 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get( '/', [
-//     'uses' => 'AuthController@goToAdminLoginPage',
-//     'as'   => 'admin.login'
-//   ]);
-
 Route::group(['prefix' => 'admin'], function () {
   //admin login route
   Route::get( '/', [
@@ -50,12 +41,17 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
   route::get('register-undangan', 'DashboardController@registerUndangan')->name('register-undangan');
   route::post('register-undangan', 'DashboardController@saveUndangan')->name('save-undangan');
+  route::post('save-update-expired', 'DashboardController@saveExpired')->name('save-update-expired');
 });
 
 Route::post('/ajax/delete-item', 'AjaxController@selectedItemDeleteById')->name('selected-item-delete');
 
 Route::group(['prefix' => '/'], function () {
   //admin login route
+  Route::get('/', function () {
+      return redirect()->route('admin.login');
+  });
+
   Route::get( '/undangan/{key}', [
     'uses' => 'HomeController@registerUndangan',
     'as'   => 'register.undangan'

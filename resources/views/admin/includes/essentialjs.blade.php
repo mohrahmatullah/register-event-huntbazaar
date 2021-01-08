@@ -43,6 +43,16 @@
 <!-- Toastr Notification JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
+<script src="{{url('build/js/bootstrap-datetimepicker.min.js')}}"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker2').datetimepicker({
+          format: 'Y-MM-DD HH:mm:59'
+      });
+    });
+</script>
+
 <script type="text/javascript">
   @if(Session::has('message'))
   var type = "{{ Session::get('alert-type', 'info') }}";

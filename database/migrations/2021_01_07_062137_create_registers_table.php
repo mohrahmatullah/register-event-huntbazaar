@@ -16,9 +16,10 @@ class CreateRegistersTable extends Migration
         Schema::create('registers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email')->unique();
-            $table->string('nama')->nullable();;
-            $table->string('tgl_lahir')->nullable();;
-            $table->string('jenkel')->nullable();;
+            $table->string('kode_registrasi')->nullable();
+            $table->string('nama')->nullable();
+            $table->string('tgl_lahir')->nullable();
+            $table->string('jenkel')->nullable();
             $table->string('design_favorite')->nullable();
             $table->enum('status', array('0','1'))->default('0');
             $table->timestamps();

@@ -5,9 +5,18 @@
 <div class="card">
   <div class="card-header">
     <h3 class="card-title">List Undangan</h3>
-    <div class="card-tools">  
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Input Undangan</button>
-    </div>
+    <div class="row">
+      <div class="col-6 text-right">
+        <div class="card-tools">  
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Update Date Expired</button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card-tools">  
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Kirim Undangan</button>
+        </div>
+      </div>
+    </div>  
   </div>
   <!-- /.card-header -->
   <div class="card-body">
@@ -16,6 +25,7 @@
       <tr>
         <th>No</th>
         <th>Email</th>
+        <th>Kode Registrasi</th>
         <th>Nama</th>
         <th>Tanggal Lahir</th>
         <th>Jenis Kelamin</th>
@@ -29,6 +39,7 @@
         <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $p->email }}</td>
+          <td>{{ $p->kode_registrasi }}</td>
           <td>
             {{ $p->nama }}
           </td>
@@ -64,8 +75,8 @@
         @csrf
         <div class="modal-body">
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Input Email</label>
-              <input type="email" class="form-control" name="email">
+              <label for="recipient-name" class="col-form-label">Kirim generate link untuk Register Event Huntbazaar</label>
+              <input type="email" class="form-control" name="email" placeholder="Masukan email">
               @if(!empty($errors->first('product_nama')))
               <p class="text-red"><i class="icon fa fa-ban"></i> {{ $errors->first('email') }}</p>
               @endif
@@ -73,7 +84,36 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Generate Link</button>
+          <button type="submit" class="btn btn-primary">Kirim</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Date Expired</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('save-update-expired') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Date Expired</label>
+              <input type="text" class="form-control" name="date_expired" placeholder="Masukan date expired" id='datetimepicker2' value="{{ $date_expired->param_value }}">
+              @if(!empty($errors->first('date_expired')))
+              <p class="text-red"><i class="icon fa fa-ban"></i> {{ $errors->first('date_expired') }}</p>
+              @endif
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update</button>
         </div>
       </form>
     </div>

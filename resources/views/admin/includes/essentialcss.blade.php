@@ -29,3 +29,6 @@
 <link rel="stylesheet" href="{{url('sweetalert/sweetalert.css')}}">
 <!-- Toastr Notification -->
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{url('build/css/bootstrap-datetimepicker.min.css')}}">

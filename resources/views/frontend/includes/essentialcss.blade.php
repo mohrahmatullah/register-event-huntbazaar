@@ -1,7 +1,6 @@
-<title>Contact V2</title>
+<title>@yield('title')</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>@yield('title')</title>
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="{{url('frontend/images/icons/favicon.ico')}}"/>
 <!--===============================================================================================-->
@@ -20,3 +19,10 @@
 <!--===============================================================================================-->
 <!-- Toastr Notification -->
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/flatly/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{url('build/css/bootstrap-datetimepicker.min.css')}}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />

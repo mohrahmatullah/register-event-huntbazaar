@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use File;
 use Illuminate\Support\Facades\Crypt;
 use Mail;
+use App\Models\Setting;
 
 class DashboardController extends Controller
 {
@@ -23,6 +24,7 @@ class DashboardController extends Controller
     public function registerUndangan()
     {
         $data['products'] = Registers::orderby('created_at', 'DESC')->get();
+        $data['date_expired'] = Setting::where('param','date_expired')->first();
         $data['title_form'] = 'List Registers';
         return view('admin.register-undangan.index', $data);
     }
@@ -63,10 +65,8 @@ class DashboardController extends Controller
                    ), function ($msg) use ($request)
             {                                                 
                   $msg->subject("Link Register Event Huntbazaar");
-                  $msg->from('mangiamo.buffet@gmail.com');
-                  $msg->to($request->email, 'Admin');
-                  // $msg->to('mangiamo.buffet@gmail.com', 'Admin');
-                  // $msg->attach($path);
+                  $msg->from('rahmatfitri104@gmail.com');
+                  $msg->to($request->email, 'Register');
             });
                 // Session::flash('success-message', "Terima kasih, kami sudah menerima email anda.");
                 return redirect()->back();
@@ -90,9 +90,34 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function saveExpired(Request $request)
     {
-        //
+        $data = $request->all();
+        $rules =  ['date_expired' => 'required'];
+        $atributname = [
+          'date_expired.required' => 'The date expired field is required.',
+        ];
+
+        $validator = Validator::make($data, $rules, $atributname);
+        // $arr = get_defined_vars(); dd($arr);
+        if($validator->fails()){
+            return redirect()->back()
+            ->withInput()
+            ->withErrors( $validator );
+        }
+        else{
+
+            $data = array(
+                'param_value' => $request->date_expired
+            );
+            $notification = array(
+              'message' => 'Success',
+              'alert-type' => 'success'
+            );
+            Setting::where('param', 'date_expired')->update($data);
+          return redirect()->back()->with($notification);
+        }
+
     }
 
     /**
