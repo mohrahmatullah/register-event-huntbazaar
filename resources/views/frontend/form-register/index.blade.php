@@ -94,7 +94,7 @@
         <div class="container-contact2-form-btn">
           <div class="wrap-contact2-form-btn">
             <div class="contact2-form-bgbtn"></div>
-            <button class="contact2-form-btn">
+            <button class="contact2-form-btn" type="submit">
               Register
             </button>
           </div>
