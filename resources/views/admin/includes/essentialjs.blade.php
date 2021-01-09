@@ -74,6 +74,38 @@
           break;
   }
   @endif
+  @if(Session::has('message_swal'))
+  var type = "{{ Session::get('alert-type', 'info') }}";
+  switch(type){
+      case 'info':
+          swal({
+            title: "{{ Session::get('message_swal') }}",
+            type: "info",
+          });
+          break;
+
+      case 'warning':
+          swal({
+            title: "{{ Session::get('message_swal') }}",
+            type: "warning",
+          });
+          break;
+
+      case 'success':
+          swal({
+            title: "{{ Session::get('message_swal') }}",
+            type: "success",
+          });
+          break;
+
+      case 'error':
+          swal({
+            title: "{{ Session::get('message_swal') }}",
+            type: "error",
+          });
+          break;
+  }
+  @endif
 </script>
 <!-- page script -->
 <script>
