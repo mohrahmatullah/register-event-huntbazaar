@@ -44,7 +44,6 @@ class DashboardController extends Controller
         ];
 
         $validator = Validator::make($data, $rules, $atributname);
-        // $arr = get_defined_vars(); dd($arr);
         if($validator->fails()){
             return redirect()->back()
             ->withInput()
@@ -56,31 +55,29 @@ class DashboardController extends Controller
 
             $p->email                 = $request->email;
             $p->save();
-            $notification = array(
-                'message' => 'Success mengirimkan generate link.',
-                'alert-type' => 'success'
-            );
-            /*Send email message carier*/
+            
             try{
                 Mail::send('layouts.layout-email',
                     array(
                        'email' => $request->email,
                        'generate_link' => route('register.undangan', Crypt::encrypt($request->email))
                    ), function ($msg) use ($request)
-            {                                                 
-                  $msg->subject("Link Register Event Huntbazaar");
-                  $msg->from('rahmatfitri104@gmail.com');
-                  $msg->to($request->email, 'Register');
-            });
-                // Session::flash('success-message', "Terima kasih, kami sudah menerima email anda.");
-                return redirect()->back();
+                    {                                                 
+                      $msg->subject("Link Register Event Huntbazaar");
+                      $msg->from('rahmatfitri104@gmail.com');
+                      $msg->to($request->email, 'Register');
+                    });
+                    $notification = array(
+                        'message' => 'Success mengirimkan generate link ke '.$request->email,
+                        'alert-type' => 'success'
+                    );
+                    return redirect()->back()->with($notification);
             }
             catch (Exception $e){
                 return redirect()->back();
             }
-            /* \Send email message carier*/
             
-          return redirect()->back()->with($notification);
+          
         }
 
     }
@@ -100,7 +97,6 @@ class DashboardController extends Controller
         ];
 
         $validator = Validator::make($data, $rules, $atributname);
-        // $arr = get_defined_vars(); dd($arr);
         if($validator->fails()){
             return redirect()->back()
             ->withInput()
